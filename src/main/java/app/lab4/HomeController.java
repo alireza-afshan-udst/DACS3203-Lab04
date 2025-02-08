@@ -1,5 +1,6 @@
 package app.lab4;
 
+import db.Queries;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
@@ -22,23 +25,59 @@ public class HomeController {
             getClass().getResource("home.fxml")
     );
 
+    public void initialize(){
+        errorMessage.setFill(Color.RED);
+    }
+
+    @FXML
+    public Text result;
+
+    @FXML
+    public Text errorMessage;
+
     @FXML
     public Button search;
 
     @FXML
-    public Label textLabel;
-
-    @FXML
     private TextField commandSearchField;
 
-    public void initialize() {
-        commandSearchField.textProperty().addListener((obs, oldText, newText) -> {
-            textLabel.setText(newText);
-        });
+    public void onSubmit() {
+        String input = commandSearchField.getText();
+        String[] response = new String[3];
+        try {
+            if (isValid(input)) {
+                response = Queries.getCommandById(input);
+            }
+        } catch (Exception e) {
+            errorMessage.setText(e.getMessage());
+            return;
+        }
+        String baseOutput = "id: %s%ncommand: %s%ndescription: %s%n";
+        String output = String.format(
+                baseOutput,
+                response[0],
+                response[1],
+                response[2]
+        );
+
+        result.setText(output);
+
+
     }
 
-    public void onSubmit() {
-        Stage stage = GitLabApplication.getPrimaryStage();
-        router.navigateTo("command.fxml", stage);
+    private boolean isValid(String input) throws Exception {
+        try {
+            int option = Integer.parseInt(input);
+
+            if (option < 1 || option > 5) {
+                throw new Exception();
+            }
+
+            return true;
+
+        } catch (Exception e) {
+            throw new Exception("Input not valid, must be a number between 1-5.");
+        }
     }
+
 }

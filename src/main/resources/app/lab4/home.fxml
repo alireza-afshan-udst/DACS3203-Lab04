@@ -13,11 +13,14 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <Text>which git command would you like to select?</Text>
+    <Text>which git command would you like to select? (1-5)</Text>
 
-    <Label fx:id="textLabel"/>
-
+    <Text fx:id="result" wrappingWidth="300"/>
     <TextField fx:id="commandSearchField"/>
+
+    <Text fx:id="errorMessage"/>
+
+
 
     <Button fx:id="search" text="Search" disable="${commandSearchField.text.empty}" onAction="#onSubmit"/>
 </VBox>

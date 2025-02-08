@@ -21,6 +21,7 @@ public class HomeController {
     FXMLLoader loader = new FXMLLoader(
             getClass().getResource("home.fxml")
     );
+
     @FXML
     public Button search;
 
@@ -37,7 +38,6 @@ public class HomeController {
     }
 
     public void onSubmit() {
-
         Stage stage = GitLabApplication.getPrimaryStage();
         router.navigateTo("command.fxml", stage);
     }

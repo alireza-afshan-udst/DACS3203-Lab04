@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.Parent;
 import javafx.scene.control.TextField;
@@ -21,9 +22,7 @@ public class HomeController {
             getClass().getResource("home.fxml")
     );
     @FXML
-    public Label search;
-
-    public Label textField;
+    public Button search;
 
     @FXML
     public Label textLabel;
@@ -35,10 +34,6 @@ public class HomeController {
         commandSearchField.textProperty().addListener((obs, oldText, newText) -> {
             textLabel.setText(newText);
         });
-    }
-
-    protected void updateText(ActionEvent event) {
-
     }
 
     public void onSubmit() {

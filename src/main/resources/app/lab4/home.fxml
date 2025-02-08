@@ -19,6 +19,5 @@
 
     <TextField fx:id="commandSearchField"/>
 
-    <Label fx:id="search"/>
-    <Button text="Search" onAction="#onSubmit"/>
+    <Button fx:id="search" text="Search" disable="${commandSearchField.text.empty}" onAction="#onSubmit"/>
 </VBox>

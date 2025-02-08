@@ -1,8 +1,9 @@
-module com.example.gitlab {
+module app.lab4 {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
 
-    opens com.example.gitlab to javafx.fxml;
-    exports com.example.gitlab;
+    opens app.lab4 to javafx.fxml;
+    exports app.lab4;
 }

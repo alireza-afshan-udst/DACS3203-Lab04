@@ -1,14 +1,17 @@
-package com.example.gitlab;
+package app.lab4;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
-public class HelloController {
+public class CommandController {
+    NavigationHelper router = new NavigationHelper();
     @FXML
-    private Label welcomeText;
+    private Label homeButton;
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    protected void onHomeButtonClick() {
+        Stage stage = GitLabApplication.getPrimaryStage();
+        router.navigateTo("home.fxml", stage);
     }
 }

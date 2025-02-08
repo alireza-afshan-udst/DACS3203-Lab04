@@ -13,4 +13,7 @@
 
     <Label fx:id="welcomeText"/>
     <Button text="Hello!" onAction="#onSearchButtonClick"/>
+
+    <Label fx:id="search"/>
+    <Button text="Search" onAction="#onSubmit"/>
 </VBox>
